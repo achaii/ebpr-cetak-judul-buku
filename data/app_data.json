@@ -1,0 +1,463 @@
+{
+  "institution": {
+    "name": "JUST EXAMPLE",
+    "address": "Jl. Jenderal Sudirman No. 123, Jakarta Pusat",
+    "branchCode": "001",
+    "branchName": "Kantor Pelayanan Operasional (KPO)",
+    "phone": "(021) 555-1234",
+    "systemName": "Cetak Judul Buku"
+  },
+  "nasabah": [
+    {
+      "id": "1",
+      "noRekening": "100230002455",
+      "noPermohonan": "100260002506",
+      "noRegister": "100200002569",
+      "namaNasabah": "AHMAD FAUZI",
+      "alamat": "JL. MERDEKA NO. 12 RT 001 RW 002, KEL. SUKAMAJU, KEC. BANDUNG",
+      "jenisProduk": "TAB MAPAN",
+      "tanggalBuka": "2026-07-01",
+      "statusBuku": "Belum Dicetak",
+      "lastPrintedSerial": null
+    },
+    {
+      "id": "2",
+      "noRekening": "100230002624",
+      "noPermohonan": "100260002678",
+      "noRegister": "100200002710",
+      "namaNasabah": "BAYU PRASETYO",
+      "alamat": "JL. DIPONEGORO NO. 45 RT 003 RW 004, KEL. CITARUM, KEC. BANDUNG WETAN",
+      "jenisProduk": "TAB MAPAN",
+      "tanggalBuka": "2026-07-05",
+      "statusBuku": "Belum Dicetak",
+      "lastPrintedSerial": null
+    },
+    {
+      "id": "3",
+      "noRekening": "100230002615",
+      "noPermohonan": "100260002669",
+      "noRegister": "100200002701",
+      "namaNasabah": "CITRA DEWI LESTARI",
+      "alamat": "JL. ASIA AFRIKA NO. 88 RT 002 RW 005, KEL. BRAGA, KEC. SUMUR BANDUNG",
+      "jenisProduk": "TAB MAPAN",
+      "tanggalBuka": "2026-07-10",
+      "statusBuku": "Belum Dicetak",
+      "lastPrintedSerial": null
+    },
+    {
+      "id": "4",
+      "noRekening": "100230002626",
+      "noPermohonan": "100260002681",
+      "noRegister": "100200002712",
+      "namaNasabah": "DEDI KURNIAWAN",
+      "alamat": "JL. GATOT SUBROTO NO. 102 RT 004 RW 001, KEL. MALABAR, KEC. LENGKONG",
+      "jenisProduk": "TAB MAPAN",
+      "tanggalBuka": "2026-07-12",
+      "statusBuku": "Belum Dicetak",
+      "lastPrintedSerial": null
+    },
+    {
+      "id": "5",
+      "noRekening": "100230002622",
+      "noPermohonan": "100260002676",
+      "noRegister": "100200002708",
+      "namaNasabah": "EKA PUTRI MAHARANI",
+      "alamat": "JL. SOEKARNO HATTA NO. 210 RT 005 RW 003, KEL. BATUNUNGGAL, KEC. BANDUNG KIDUL",
+      "jenisProduk": "TAB MAPAN",
+      "tanggalBuka": "2026-07-15",
+      "statusBuku": "Belum Dicetak",
+      "lastPrintedSerial": null
+    },
+    {
+      "id": "6",
+      "noRekening": "T012041943",
+      "noPermohonan": "T012041943",
+      "noRegister": "100200002490",
+      "namaNasabah": "FAJAR HIDAYATULLAH",
+      "alamat": "JL. PAJAJARAN NO. 15 RT 001 RW 006, KEL. PASIRKALIKI, KEC. CICENDO",
+      "jenisProduk": "TAB MAPAN",
+      "tanggalBuka": "2026-07-20",
+      "statusBuku": "Belum Dicetak",
+      "lastPrintedSerial": null
+    },
+    {
+      "id": "7",
+      "noRekening": "100230002612",
+      "noPermohonan": "100260002666",
+      "noRegister": "100200002698",
+      "namaNasabah": "GITA PUSPITA",
+      "alamat": "JL. SETIABUDI NO. 67 RT 002 RW 007, KEL. HEGARMANAH, KEC. CIDADAP",
+      "jenisProduk": "TAB MAPAN",
+      "tanggalBuka": "2026-07-22",
+      "statusBuku": "Belum Dicetak",
+      "lastPrintedSerial": null
+    },
+    {
+      "id": "8",
+      "noRekening": "T012011028",
+      "noPermohonan": "T012011028",
+      "noRegister": "100200002410",
+      "namaNasabah": "HENDRA WIJAYA",
+      "alamat": "JL. RIAU NO. 34 RT 003 RW 002, KEL. MERDEKA, KEC. SUMUR BANDUNG",
+      "jenisProduk": "TAB MAPAN",
+      "tanggalBuka": "2026-07-25",
+      "statusBuku": "Belum Dicetak",
+      "lastPrintedSerial": null
+    },
+    {
+      "id": "9",
+      "noRekening": "T012011044",
+      "noPermohonan": "T012011044",
+      "noRegister": "100200002425",
+      "namaNasabah": "INDAH PERMATASARI",
+      "alamat": "JL. SURAPATI NO. 55 RT 004 RW 005, KEL. CIHAUR GEULIS, KEC. CIBEUNYING KALER",
+      "jenisProduk": "TAB MAPAN",
+      "tanggalBuka": "2026-07-28",
+      "statusBuku": "Belum Dicetak",
+      "lastPrintedSerial": null
+    },
+    {
+      "id": "10",
+      "noRekening": "T012011672",
+      "noPermohonan": "T012011672",
+      "noRegister": "100200002450",
+      "namaNasabah": "JOKO SUSILO",
+      "alamat": "JL. BUAH BATU NO. 140 RT 002 RW 008, KEL. TURANGGA, KEC. LENGKONG",
+      "jenisProduk": "TAB MAPAN",
+      "tanggalBuka": "2026-08-01",
+      "statusBuku": "Belum Dicetak",
+      "lastPrintedSerial": null
+    },
+    {
+      "id": "11",
+      "noRekening": "100230002635",
+      "noPermohonan": "100260002690",
+      "noRegister": "100200002720",
+      "namaNasabah": "KURNIAWAN SAPUTRA",
+      "alamat": "JL. SUDIRMAN NO. 78 RT 001 RW 003, KEL. DUNGUS CARIANG, KEC. ANDIR",
+      "jenisProduk": "TAB BERJANGKA",
+      "tanggalBuka": "2026-08-05",
+      "statusBuku": "Belum Dicetak",
+      "lastPrintedSerial": null
+    },
+    {
+      "id": "12",
+      "noRekening": "100230002640",
+      "noPermohonan": "100260002695",
+      "noRegister": "100200002725",
+      "namaNasabah": "LESTARI WULANDARI",
+      "alamat": "JL. SUKASARI NO. 29 RT 005 RW 004, KEL. SARIJADI, KEC. SUKASARI",
+      "jenisProduk": "TAB MAPAN",
+      "tanggalBuka": "2026-08-10",
+      "statusBuku": "Belum Dicetak",
+      "lastPrintedSerial": null
+    }
+  ],
+  "barangCetakan": [
+    {
+      "id": "BC01",
+      "kode": "T",
+      "nama": "Buku Tabungan",
+      "namaBarang": "Buku Tabungan Baru",
+      "satuan": "Buku",
+      "saldoAwal": 486,
+      "debet": 2,
+      "kredit": 0,
+      "saldoAkhir": 484,
+      "minStok": 100
+    },
+    {
+      "id": "BC02",
+      "kode": "D",
+      "nama": "Bilyet Deposito",
+      "namaBarang": "Bilyet Deposito Baru",
+      "satuan": "Lembar",
+      "saldoAwal": 556,
+      "debet": 31,
+      "kredit": 50,
+      "saldoAkhir": 575,
+      "minStok": 100
+    }
+  ],
+  "stokSeri": [
+    {
+      "noSerie": "001685",
+      "kode": "T",
+      "namaBarang": "Buku Tabungan Baru",
+      "status": "TERSEDIA",
+      "tglPenerimaan": "2026-06-25",
+      "usedBy": null,
+      "usedAt": null
+    },
+    {
+      "noSerie": "001686",
+      "kode": "T",
+      "namaBarang": "Buku Tabungan Baru",
+      "status": "TERSEDIA",
+      "tglPenerimaan": "2026-06-25",
+      "usedBy": null,
+      "usedAt": null
+    },
+    {
+      "noSerie": "001687",
+      "kode": "T",
+      "namaBarang": "Buku Tabungan Baru",
+      "status": "TERSEDIA",
+      "tglPenerimaan": "2026-06-25",
+      "usedBy": null,
+      "usedAt": null
+    },
+    {
+      "noSerie": "001688",
+      "kode": "T",
+      "namaBarang": "Buku Tabungan Baru",
+      "status": "TERSEDIA",
+      "tglPenerimaan": "2026-06-25",
+      "usedBy": null,
+      "usedAt": null
+    },
+    {
+      "noSerie": "001689",
+      "kode": "T",
+      "namaBarang": "Buku Tabungan Baru",
+      "status": "TERSEDIA",
+      "tglPenerimaan": "2026-06-25",
+      "usedBy": null,
+      "usedAt": null
+    },
+    {
+      "noSerie": "001691",
+      "kode": "T",
+      "namaBarang": "Buku Tabungan Baru",
+      "status": "TERSEDIA",
+      "tglPenerimaan": "2026-06-25",
+      "usedBy": null,
+      "usedAt": null
+    },
+    {
+      "noSerie": "001692",
+      "kode": "T",
+      "namaBarang": "Buku Tabungan Baru",
+      "status": "TERSEDIA",
+      "tglPenerimaan": "2026-06-25",
+      "usedBy": null,
+      "usedAt": null
+    },
+    {
+      "noSerie": "001693",
+      "kode": "T",
+      "namaBarang": "Buku Tabungan Baru",
+      "status": "TERSEDIA",
+      "tglPenerimaan": "2026-06-25",
+      "usedBy": null,
+      "usedAt": null
+    },
+    {
+      "noSerie": "001694",
+      "kode": "T",
+      "namaBarang": "Buku Tabungan Baru",
+      "status": "TERSEDIA",
+      "tglPenerimaan": "2026-06-25",
+      "usedBy": null,
+      "usedAt": null
+    },
+    {
+      "noSerie": "001695",
+      "kode": "T",
+      "namaBarang": "Buku Tabungan Baru",
+      "status": "TERSEDIA",
+      "tglPenerimaan": "2026-06-25",
+      "usedBy": null,
+      "usedAt": null
+    },
+    {
+      "noSerie": "001696",
+      "kode": "T",
+      "namaBarang": "Buku Tabungan Baru",
+      "status": "TERSEDIA",
+      "tglPenerimaan": "2026-06-25",
+      "usedBy": null,
+      "usedAt": null
+    },
+    {
+      "noSerie": "001697",
+      "kode": "T",
+      "namaBarang": "Buku Tabungan Baru",
+      "status": "TERSEDIA",
+      "tglPenerimaan": "2026-06-25",
+      "usedBy": null,
+      "usedAt": null
+    },
+    {
+      "noSerie": "001698",
+      "kode": "T",
+      "namaBarang": "Buku Tabungan Baru",
+      "status": "TERSEDIA",
+      "tglPenerimaan": "2026-06-25",
+      "usedBy": null,
+      "usedAt": null
+    },
+    {
+      "noSerie": "001699",
+      "kode": "T",
+      "namaBarang": "Buku Tabungan Baru",
+      "status": "TERSEDIA",
+      "tglPenerimaan": "2026-06-25",
+      "usedBy": null,
+      "usedAt": null
+    },
+    {
+      "noSerie": "001700",
+      "kode": "T",
+      "namaBarang": "Buku Tabungan Baru",
+      "status": "TERSEDIA",
+      "tglPenerimaan": "2026-06-25",
+      "usedBy": null,
+      "usedAt": null
+    },
+    {
+      "noSerie": "001701",
+      "kode": "T",
+      "namaBarang": "Buku Tabungan Baru",
+      "status": "TERSEDIA",
+      "tglPenerimaan": "2026-06-25",
+      "usedBy": null,
+      "usedAt": null
+    },
+    {
+      "noSerie": "001702",
+      "kode": "T",
+      "namaBarang": "Buku Tabungan Baru",
+      "status": "TERSEDIA",
+      "tglPenerimaan": "2026-06-25",
+      "usedBy": null,
+      "usedAt": null
+    },
+    {
+      "noSerie": "001703",
+      "kode": "T",
+      "namaBarang": "Buku Tabungan Baru",
+      "status": "TERSEDIA",
+      "tglPenerimaan": "2026-06-25",
+      "usedBy": null,
+      "usedAt": null
+    },
+    {
+      "noSerie": "001704",
+      "kode": "T",
+      "namaBarang": "Buku Tabungan Baru",
+      "status": "TERSEDIA",
+      "tglPenerimaan": "2026-06-25",
+      "usedBy": null,
+      "usedAt": null
+    },
+    {
+      "noSerie": "001705",
+      "kode": "T",
+      "namaBarang": "Buku Tabungan Baru",
+      "status": "TERSEDIA",
+      "tglPenerimaan": "2026-06-25",
+      "usedBy": null,
+      "usedAt": null
+    },
+    {
+      "noSerie": "D-008101",
+      "kode": "D",
+      "namaBarang": "Bilyet Deposito Baru",
+      "status": "TERSEDIA",
+      "tglPenerimaan": "2026-07-15",
+      "usedBy": null,
+      "usedAt": null
+    },
+    {
+      "noSerie": "D-008102",
+      "kode": "D",
+      "namaBarang": "Bilyet Deposito Baru",
+      "status": "TERSEDIA",
+      "tglPenerimaan": "2026-07-15",
+      "usedBy": null,
+      "usedAt": null
+    },
+    {
+      "noSerie": "D-008103",
+      "kode": "D",
+      "namaBarang": "Bilyet Deposito Baru",
+      "status": "TERSEDIA",
+      "tglPenerimaan": "2026-07-15",
+      "usedBy": null,
+      "usedAt": null
+    },
+    {
+      "noSerie": "D-008104",
+      "kode": "D",
+      "namaBarang": "Bilyet Deposito Baru",
+      "status": "TERSEDIA",
+      "tglPenerimaan": "2026-07-15",
+      "usedBy": null,
+      "usedAt": null
+    }
+  ],
+  "transaksi": [
+    {
+      "id": "TRX-001",
+      "tanggal": "2026-07-18 10:15:00",
+      "noTransaksi": "TRX/BC/20260718/0001",
+      "jenisBarang": "Buku Tabungan",
+      "kode": "T",
+      "tipe": "PENGELUARAN",
+      "jumlah": 1,
+      "noSerie": "001683",
+      "noRekening": "100230001888",
+      "namaNasabah": "RATNA SARI",
+      "keterangan": "Cetak Judul Buku Tabungan Baru",
+      "petugas": "CS-01 (RANI)",
+      "status": "SELESAI"
+    },
+    {
+      "id": "TRX-002",
+      "tanggal": "2026-08-02 14:30:00",
+      "noTransaksi": "TRX/BC/20260802/0002",
+      "jenisBarang": "Buku Tabungan",
+      "kode": "T",
+      "tipe": "PENGELUARAN",
+      "jumlah": 1,
+      "noSerie": "001684",
+      "noRekening": "100230001920",
+      "namaNasabah": "BAGUS PRATAMA",
+      "keterangan": "Cetak Judul Buku Tabungan Baru",
+      "petugas": "CS-02 (FAJAR)",
+      "status": "SELESAI"
+    },
+    {
+      "id": "TRX-003",
+      "tanggal": "2026-08-15 09:00:00",
+      "noTransaksi": "TRX/BC/20260815/0003",
+      "jenisBarang": "Bilyet Deposito",
+      "kode": "D",
+      "tipe": "PENERIMAAN",
+      "jumlah": 50,
+      "noSerie": "D-008101 s.d D-008150",
+      "noRekening": "-",
+      "namaNasabah": "Penerimaan Logistik Percetakan",
+      "keterangan": "Penerimaan Blanko Bilyet Deposito Seri D-008101 - D-008150",
+      "petugas": "LOG-01 (HENDRA)",
+      "status": "SELESAI"
+    },
+    {
+      "id": "TRX-004",
+      "tanggal": "2026-09-01 11:20:00",
+      "noTransaksi": "TRX/BC/20260901/0004",
+      "jenisBarang": "Bilyet Deposito",
+      "kode": "D",
+      "tipe": "PENGELUARAN",
+      "jumlah": 31,
+      "noSerie": "D-008070 s.d D-008100",
+      "noRekening": "DEP-2026-001..31",
+      "namaNasabah": "Distribusi Deposito Berjangka",
+      "keterangan": "Penerbitan Bilyet Deposito Nasabah",
+      "petugas": "CS-01 (RANI)",
+      "status": "SELESAI"
+    }
+  ],
+  "lastUpdated": "2026-11-24T13:56:32.557Z"
+}
