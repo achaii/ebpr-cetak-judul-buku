@@ -10,20 +10,19 @@ export const viewport: Viewport = {
 export const metadata: Metadata = {
   metadataBase: new URL('https://ebpr-cetak-judul-buku.vercel.app'),
   title: {
-    default: 'e-Inventaris BPR - Cetak Judul Buku Tabungan',
-    template: '%s | e-Inventaris BPR',
+    default: 'Cetak Judul Buku - BPR',
+    template: '%s | Cetak Judul Buku',
   },
   description:
-    'Sistem Informasi Manajemen Barang Cetakan & Cetak Judul Buku Tabungan BPR. Terintegrasi, cepat, akurat, dan aman.',
-  applicationName: 'e-Inventaris BPR',
-  authors: [{ name: 'PT BPR Ultera / e-BPR' }],
+    'Aplikasi Cetak Judul Buku Tabungan dan Pelaporan Barang Cetakan BPR. Terintegrasi, cepat, akurat, dan aman.',
+  applicationName: 'Cetak Judul Buku',
+  authors: [{ name: 'Cetak Judul Buku BPR' }],
   generator: 'Next.js',
   keywords: [
     'BPR',
     'Cetak Judul Buku',
     'Buku Tabungan',
     'Barang Cetakan',
-    'e-Inventaris',
     'Perbankan',
     'JUST EXAMPLE',
   ],
@@ -39,24 +38,24 @@ export const metadata: Metadata = {
     type: 'website',
     locale: 'id_ID',
     url: 'https://ebpr-cetak-judul-buku.vercel.app/',
-    siteName: 'e-Inventaris BPR',
-    title: 'e-Inventaris BPR - Cetak Judul Buku Tabungan',
+    siteName: 'Cetak Judul Buku',
+    title: 'Cetak Judul Buku - Cetak Judul Buku Tabungan BPR',
     description:
-      'Sistem Informasi Manajemen Barang Cetakan & Cetak Judul Buku Tabungan BPR. Terintegrasi, cepat, akurat, dan aman.',
+      'Aplikasi Cetak Judul Buku Tabungan dan Pelaporan Barang Cetakan BPR. Terintegrasi, cepat, akurat, dan aman.',
     images: [
       {
         url: '/og-image.png',
         width: 1200,
         height: 630,
-        alt: 'e-Inventaris BPR - Cetak Judul Buku Tabungan',
+        alt: 'Cetak Judul Buku - Cetak Judul Buku Tabungan BPR',
       },
     ],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'e-Inventaris BPR - Cetak Judul Buku Tabungan',
+    title: 'Cetak Judul Buku - Cetak Judul Buku Tabungan BPR',
     description:
-      'Sistem Informasi Manajemen Barang Cetakan & Cetak Judul Buku Tabungan BPR. Terintegrasi, cepat, akurat, dan aman.',
+      'Aplikasi Cetak Judul Buku Tabungan dan Pelaporan Barang Cetakan BPR. Terintegrasi, cepat, akurat, dan aman.',
     images: ['/og-image.png'],
   },
   other: {

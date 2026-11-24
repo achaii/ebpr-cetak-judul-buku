@@ -1,6 +1,6 @@
-# e-Inventaris BPR - Sistem Cetak Judul Buku & Barang Cetakan
+# Cetak Judul Buku - Sistem Cetak Judul Buku Tabungan & Barang Cetakan BPR
 
-Aplikasi Sistem Informasi e-Inventaris Perbankan BPR (Bank Perekonomian Rakyat) berbasis **Next.js 14**, **TypeScript**, dan **Tailwind CSS**. Sistem ini didesain sesuai dengan standar operasional cetak buku tabungan dan pelaporan barang cetakan perbankan.
+Aplikasi Sistem Informasi Cetak Judul Buku Perbankan BPR (Bank Perekonomian Rakyat) berbasis **Next.js 14**, **TypeScript**, dan **Tailwind CSS**. Sistem ini didesain sesuai dengan standar operasional cetak buku tabungan dan pelaporan barang cetakan perbankan.
 
 ---
 

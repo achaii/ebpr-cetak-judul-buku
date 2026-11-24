@@ -1,7 +1,7 @@
 import { ImageResponse } from 'next/og';
 
 export const runtime = 'edge';
-export const alt = 'e-Inventaris BPR - Cetak Judul Buku Tabungan';
+export const alt = 'Cetak Judul Buku - Cetak Judul Buku Tabungan BPR';
 export const size = {
   width: 1200,
   height: 630,

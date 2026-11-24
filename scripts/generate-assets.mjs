@@ -35,7 +35,7 @@ const svgFavicon = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" 
     <!-- Passbook cover / body -->
     <rect x="0" y="0" width="44" height="42" rx="4" fill="#ffffff"/>
     
-    <!-- Header band of passbook (e-BPR Green) -->
+    <!-- Header band of passbook (BPR Green) -->
     <path d="M0 4 C0 1.8 1.8 0 4 0 L40 0 C42.2 0 44 1.8 44 4 L44 11 L0 11 Z" fill="#127a38"/>
     
     <!-- Bank Gold Emblem / Stamp -->

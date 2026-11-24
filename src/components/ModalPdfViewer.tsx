@@ -290,7 +290,7 @@ export const ModalPdfViewer: React.FC<ModalPdfViewerProps> = ({
             {/* Notes only for Report 02 */}
             {reportType === '02' && (
               <div className="text-[10px] text-slate-500 pt-2">
-                <p>* Laporan ini digenerate secara otomatis oleh sistem e-Inventaris BPR.</p>
+                <p>* Laporan ini digenerate secara otomatis oleh sistem Cetak Judul Buku BPR.</p>
                 <p>* Mutasi Debet merepresentasikan pengeluaran barang cetakan ke nasabah/operasional.</p>
                 <p>* Mutasi Kredit merepresentasikan penerimaan kiriman logistik baru dari percetakan.</p>
               </div>

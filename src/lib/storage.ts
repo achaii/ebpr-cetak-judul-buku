@@ -1,7 +1,8 @@
 import defaultData from '../../data/default_dataset.json';
 import { AppDatabase, Nasabah, StokSeri, TransaksiBarangCetakan, BarangCetakan } from '@/types/inventory';
 
-const STORAGE_KEY = 'einventaris_db_v1';
+const STORAGE_KEY = 'cetak_judul_buku_db_v1';
+const LEGACY_STORAGE_KEY = 'einventaris_db_v1';
 
 export function getDefaultDatabase(): AppDatabase {
   return {
@@ -16,7 +17,10 @@ export function loadDatabaseFromLocalStorage(): AppDatabase {
   }
 
   try {
-    const raw = localStorage.getItem(STORAGE_KEY);
+    let raw = localStorage.getItem(STORAGE_KEY);
+    if (!raw) {
+      raw = localStorage.getItem(LEGACY_STORAGE_KEY);
+    }
     if (!raw) {
       const initial = getDefaultDatabase();
       localStorage.setItem(STORAGE_KEY, JSON.stringify(initial));
