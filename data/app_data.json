@@ -17,9 +17,9 @@
       "alamat": "JL. MERDEKA NO. 12 RT 001 RW 002, KEL. SUKAMAJU, KEC. BANDUNG",
       "jenisProduk": "TAB MAPAN",
       "tanggalBuka": "2026-07-01",
-      "statusBuku": "Belum Dicetak",
-      "lastPrintedSerial": null,
-      "lastPrintedDate": null
+      "statusBuku": "Sudah Dicetak",
+      "lastPrintedSerial": "001685",
+      "lastPrintedDate": "2026-11-24T15:35:55.706Z"
     },
     {
       "id": "2",
@@ -162,9 +162,9 @@
       "namaBarang": "Buku Tabungan Baru",
       "satuan": "Buku",
       "saldoAwal": 486,
-      "debet": 2,
+      "debet": 3,
       "kredit": 0,
-      "saldoAkhir": 484,
+      "saldoAkhir": 483,
       "minStok": 100
     },
     {
@@ -185,10 +185,10 @@
       "noSerie": "001685",
       "kode": "T",
       "namaBarang": "Buku Tabungan Baru",
-      "status": "TERSEDIA",
+      "status": "TERPAKAI",
       "tglPenerimaan": "2026-06-25",
-      "usedBy": null,
-      "usedAt": null
+      "usedBy": "100230002455",
+      "usedAt": "2026-11-24T15:35:55.706Z"
     },
     {
       "noSerie": "001686",
@@ -399,6 +399,22 @@
     }
   ],
   "transaksi": [
+    {
+      "id": "TRX-1795534555706",
+      "tanggal": "24/11/2026 22.35.55",
+      "noTransaksi": "TRX/BC/202611/0017",
+      "jenisBarang": "Buku Tabungan",
+      "kode": "T",
+      "tipe": "PENGELUARAN",
+      "jumlah": 1,
+      "noSerie": "001685",
+      "noRekening": "100230002455",
+      "noCIF": "100200002569",
+      "namaNasabah": "AHMAD FAUZI",
+      "keterangan": "Cetak Judul Buku Tabungan Baru No Seri 001685",
+      "petugas": "CS-01 (OPERATOR)",
+      "status": "SELESAI"
+    },
     {
       "id": "TRX-BATAL-1795532873007",
       "tanggal": "24/11/2026 22.07.53",
@@ -655,5 +671,5 @@
       "status": "SELESAI"
     }
   ],
-  "lastUpdated": "2026-11-24T15:13:10.667Z"
+  "lastUpdated": "2026-11-24T15:35:55.707Z"
 }
