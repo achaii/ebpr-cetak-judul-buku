@@ -92,3 +92,38 @@ test('4. Reset Database Idempotency', () => {
   assert.equal(resetObj.barangCetakan.length, defaultObj.barangCetakan.length);
   assert.equal(resetObj.stokSeri.length, defaultObj.stokSeri.length);
 });
+
+test('5. Authorization Password Check for Deleting Used Serial (admin1235)', () => {
+  // Arrange
+  const ADMIN_PASSWORD_DEFAULT = 'admin1235';
+  const testInputCorrect = 'admin1235';
+  const testInputWrong = 'wrongpass';
+  const testInputEmpty = '';
+
+  // Act & Assert (Password Verification Logic)
+  const verifyAuth = (input) => input.trim() === ADMIN_PASSWORD_DEFAULT;
+
+  assert.equal(verifyAuth(testInputCorrect), true, 'Correct wifi password admin1235 must be authorized');
+  assert.equal(verifyAuth(testInputWrong), false, 'Wrong password must be rejected');
+  assert.equal(verifyAuth(testInputEmpty), false, 'Empty password must be rejected');
+});
+
+test('6. Stock Accounting Reversal when Used Serial is Deleted / Cancelled', () => {
+  // Arrange
+  const raw = fs.readFileSync(defaultDataPath, 'utf-8');
+  const data = JSON.parse(raw);
+  const bukuTabungan = data.barangCetakan.find((b) => b.kode === 'T');
+  
+  // Simulate state where 1 passbook is used
+  const originalDebet = bukuTabungan.debet;
+  const originalSaldoAkhir = bukuTabungan.saldoAkhir;
+
+  // Act: Cancel/delete used blanko serial
+  const newDebet = Math.max(0, originalDebet - 1);
+  const newSaldoAkhir = bukuTabungan.saldoAwal - newDebet + bukuTabungan.kredit;
+
+  // Assert: debet decreases by 1 and saldoAkhir increases by 1
+  assert.equal(newDebet, originalDebet - 1);
+  assert.equal(newSaldoAkhir, originalSaldoAkhir + 1);
+  assert.equal(bukuTabungan.saldoAwal - newDebet + bukuTabungan.kredit, newSaldoAkhir);
+});

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { createPortal } from 'react-dom';
-import { Printer, X, QrCode } from 'lucide-react';
+import { Printer, X, QrCode, AlertCircle, Info } from 'lucide-react';
 import { Nasabah, Institution } from '@/types/inventory';
 
 interface ModalPreviewCetakBukuProps {
@@ -141,28 +141,40 @@ export const ModalPreviewCetakBuku: React.FC<ModalPreviewCetakBukuProps> = ({
           </div>
         </div>
 
-        {/* Modal Actions */}
-        <div className="px-6 py-4 bg-white border-t border-slate-200 flex items-center justify-between">
-          <p className="text-xs text-slate-500">
-            Pastikan fisik buku tabungan nomor seri <strong>{noSerie}</strong> sudah terpasang di printer passbook.
-          </p>
-          <div className="flex space-x-2">
-            <button
-              onClick={onClose}
-              className="px-4 py-2 border border-slate-300 rounded-lg text-xs font-semibold text-slate-700 hover:bg-slate-100 transition-colors"
-            >
-              Batal
-            </button>
-            <button
-              onClick={() => {
-                onConfirmPrint();
-                window.print();
-              }}
-              className="px-5 py-2 bg-emerald-600 hover:bg-emerald-700 text-white rounded-lg text-xs font-semibold shadow flex items-center space-x-1.5 transition-colors"
-            >
-              <Printer className="w-4 h-4" />
-              <span>Cetak Sekarang</span>
-            </button>
+        {/* Modal Actions & Keterangan Penyimpanan */}
+        <div className="px-6 py-4 bg-white border-t border-slate-200 space-y-3">
+          {/* Banner Peringatan Kunci Nomor Seri */}
+          <div className="bg-amber-50/90 border border-amber-300 rounded-lg p-3 text-xs text-amber-950 flex items-start space-x-2.5 leading-relaxed">
+            <AlertCircle className="w-4 h-4 text-amber-600 shrink-0 mt-0.5" />
+            <div>
+              <strong className="font-bold text-amber-950">Konfirmasi Penyimpanan Status Buku:</strong> Menekan tombol <span className="font-bold text-emerald-800">&quot;Cetak Sekarang&quot;</span> akan langsung mencetak fisik buku dan memastikan nomor seri <span className="font-mono font-bold text-emerald-900 bg-amber-100 px-1 py-0.5 rounded border border-amber-300">{noSerie}</span> resmi <strong>TERPAKAI</strong> oleh nasabah <strong>{nasabah.namaNasabah}</strong> (No. Rekening: {nasabah.noRekening}), mencatat mutasi pengeluaran ke inventaris, serta menyimpan data secara permanen ke database. Menekan tombol <span className="font-bold text-slate-700">&quot;Batal&quot;</span> akan menutup jendela tanpa menyimpan data apapun.
+            </div>
+          </div>
+
+          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+            <p className="text-xs text-slate-500">
+              Pastikan fisik buku tabungan nomor seri <strong className="text-slate-800 font-mono">{noSerie}</strong> sudah terpasang rapi di printer passbook.
+            </p>
+            <div className="flex space-x-2 shrink-0">
+              <button
+                onClick={onClose}
+                className="px-4 py-2 border border-slate-300 rounded-lg text-xs font-semibold text-slate-700 hover:bg-slate-100 transition-colors"
+                title="Tutup pratinjau tanpa menyimpan perubahan data"
+              >
+                Batal (Belum Menyimpan)
+              </button>
+              <button
+                onClick={() => {
+                  onConfirmPrint();
+                  window.print();
+                }}
+                className="px-5 py-2 bg-emerald-600 hover:bg-emerald-700 text-white rounded-lg text-xs font-semibold shadow flex items-center space-x-1.5 transition-colors"
+                title="Cetak fisik buku dan kunci nomor seri sebagai TERPAKAI"
+              >
+                <Printer className="w-4 h-4" />
+                <span>Cetak Sekarang (Kunci &amp; Simpan)</span>
+              </button>
+            </div>
           </div>
         </div>
       </div>

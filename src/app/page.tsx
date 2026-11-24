@@ -208,6 +208,96 @@ export default function Home() {
     showToast(`Penerimaan ${count} unit ${namaBarang} berhasil ditambahkan ke inventaris!`);
   };
 
+  // Handler: Delete / Revert used blanko serial (authorized via admin1235)
+  const handleDeleteUsedSerial = (noSerie: string) => {
+    const timestamp = new Date().toISOString();
+    const targetSeri = db.stokSeri.find((s) => s.noSerie === noSerie);
+    if (!targetSeri) return;
+
+    const usedByRekening = targetSeri.usedBy;
+
+    // 1. Revert serial status to TERSEDIA and clear usage info
+    const updatedStokSeri = db.stokSeri.map((s) => {
+      if (s.noSerie === noSerie) {
+        return {
+          ...s,
+          status: 'TERSEDIA' as const,
+          usedBy: null,
+          usedAt: null,
+        };
+      }
+      return s;
+    });
+
+    // 2. Adjust physical stock debet and saldo akhir
+    const updatedBarangCetakan = db.barangCetakan.map((b) => {
+      if (b.kode === targetSeri.kode) {
+        const newDebet = Math.max(0, b.debet - 1);
+        const newSaldoAkhir = b.saldoAwal - newDebet + b.kredit;
+        return {
+          ...b,
+          debet: newDebet,
+          saldoAkhir: newSaldoAkhir,
+        };
+      }
+      return b;
+    });
+
+    // 3. Revert nasabah statusBuku if it was linked to this serial
+    const updatedNasabah = db.nasabah.map((n) => {
+      if (n.lastPrintedSerial === noSerie) {
+        return {
+          ...n,
+          statusBuku: 'Belum Dicetak' as const,
+          lastPrintedSerial: null,
+          lastPrintedDate: null,
+        };
+      }
+      return n;
+    });
+
+    // 4. Record cancellation log in transactions
+    const cancelTrx = {
+      id: `TRX-BATAL-${Date.now()}`,
+      tanggal: `${new Date().toLocaleDateString('id-ID')} ${new Date().toLocaleTimeString('id-ID')}`,
+      noTransaksi: `BATAL/BC/${new Date().getFullYear()}${String(new Date().getMonth() + 1).padStart(2, '0')}/${String(db.transaksi.length + 1).padStart(4, '0')}`,
+      jenisBarang: targetSeri.namaBarang,
+      kode: targetSeri.kode,
+      tipe: 'PENERIMAAN' as const,
+      jumlah: 1,
+      noSerie: noSerie,
+      noRekening: usedByRekening || '-',
+      namaNasabah: 'Pembatalan Blanko Terpakai',
+      keterangan: `Pembatalan status nomor seri ${noSerie} (Otorisasi: admin1235)`,
+      petugas: 'SUPERVISOR (ADMIN)',
+      status: 'BATAL' as const,
+    };
+
+    const newDb: AppDatabase = {
+      ...db,
+      stokSeri: updatedStokSeri,
+      barangCetakan: updatedBarangCetakan,
+      nasabah: updatedNasabah,
+      transaksi: [cancelTrx, ...db.transaksi],
+      lastUpdated: timestamp,
+    };
+
+    setDb(newDb);
+    saveDatabaseToLocalStorage(newDb);
+
+    try {
+      fetch('/api/data', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(newDb),
+      }).catch((e) => console.warn('Sync API failed:', e));
+    } catch (e) {
+      console.warn('Sync API error:', e);
+    }
+
+    showToast(`Nomor seri ${noSerie} berhasil dibatalkan dan status blanko kembali TERSEDIA!`);
+  };
+
   // Handler: Reset Database to Default JSON
   const handleConfirmReset = async () => {
     setResetLoading(true);
@@ -277,6 +367,7 @@ export default function Home() {
             barangCetakanList={db.barangCetakan}
             stokSeriList={db.stokSeri}
             onAddStockPenerimaan={handleAddStockPenerimaan}
+            onDeleteUsedSerial={handleDeleteUsedSerial}
           />
         )}
       </main>

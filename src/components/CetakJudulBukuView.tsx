@@ -297,22 +297,33 @@ export const CetakJudulBukuView: React.FC<CetakJudulBukuViewProps> = ({
           <hr className="border-t border-[#9acb4b]" />
 
           {/* Action Buttons: Cetak (Green) and Tutup (Blue) */}
-          <div className="flex items-center space-x-2 pt-1">
-            <button
-              type="button"
-              onClick={handleOpenPrintPreview}
-              className="px-4 py-1.5 bg-[#127a38] hover:bg-[#0f642e] text-white text-xs font-semibold rounded shadow-sm flex items-center space-x-1.5 transition-colors"
-            >
-              <Printer className="w-3.5 h-3.5" />
-              <span>Cetak</span>
-            </button>
-            <button
-              type="button"
-              onClick={handleTutup}
-              className="px-4 py-1.5 bg-[#1b75bb] hover:bg-[#155d96] text-white text-xs font-semibold rounded shadow-sm transition-colors"
-            >
-              <span>Tutup</span>
-            </button>
+          <div className="flex flex-col md:flex-row md:items-center justify-between gap-3 pt-1">
+            <div className="flex items-center space-x-2 shrink-0">
+              <button
+                type="button"
+                onClick={handleOpenPrintPreview}
+                className="px-4 py-1.5 bg-[#127a38] hover:bg-[#0f642e] text-white text-xs font-semibold rounded shadow-sm flex items-center space-x-1.5 transition-colors"
+                title="Buka pratinjau cetak (belum menyimpan ke sistem)"
+              >
+                <Printer className="w-3.5 h-3.5" />
+                <span>Cetak</span>
+              </button>
+              <button
+                type="button"
+                onClick={handleTutup}
+                className="px-4 py-1.5 bg-[#1b75bb] hover:bg-[#155d96] text-white text-xs font-semibold rounded shadow-sm transition-colors"
+              >
+                <span>Tutup</span>
+              </button>
+            </div>
+
+            {/* Keterangan Alur Cetak & Belum Menyimpan */}
+            <div className="text-[11px] text-amber-900 bg-amber-50/90 border border-amber-300 rounded px-3 py-1.5 flex items-start space-x-1.5 leading-snug">
+              <Info className="w-3.5 h-3.5 text-amber-700 shrink-0 mt-0.5" />
+              <div>
+                <strong className="font-semibold text-amber-950">Informasi Alur Cetak:</strong> Tombol <span className="font-bold text-[#127a38]">&quot;Cetak&quot;</span> hanya membuka pratinjau layout buku tabungan (belum mengunci nomor seri dan belum menyimpan perubahan ke database). Nomor seri fisik baru resmi dikunci &amp; terpakai setelah Anda menekan tombol <span className="font-bold text-emerald-800">&quot;Cetak Sekarang&quot;</span> pada jendela pratinjau.
+              </div>
+            </div>
           </div>
         </div>
       )}

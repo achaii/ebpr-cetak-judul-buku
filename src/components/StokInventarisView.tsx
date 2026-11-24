@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
-import { PlusCircle, PackagePlus, Search, Info } from 'lucide-react';
+import { PlusCircle, PackagePlus, Search, Info, Trash2, KeyRound } from 'lucide-react';
 import { BarangCetakan, StokSeri } from '@/types/inventory';
+import { ModalHapusBlanko } from './ModalHapusBlanko';
 
 interface StokInventarisViewProps {
   barangCetakanList: BarangCetakan[];
@@ -11,15 +12,18 @@ interface StokInventarisViewProps {
     seriAkhir: number;
     keterangan: string;
   }) => void;
+  onDeleteUsedSerial?: (noSerie: string) => void;
 }
 
 export const StokInventarisView: React.FC<StokInventarisViewProps> = ({
   stokSeriList,
   onAddStockPenerimaan,
+  onDeleteUsedSerial,
 }) => {
   const [filterKode, setFilterKode] = useState<string>('ALL');
   const [filterStatus, setFilterStatus] = useState<string>('ALL');
   const [searchSeri, setSearchSeri] = useState('');
+  const [selectedSeriToDelete, setSelectedSeriToDelete] = useState<StokSeri | null>(null);
 
   // Form Penerimaan Stok Baru
   const [showAddForm, setShowAddForm] = useState(false);
@@ -263,13 +267,14 @@ export const StokInventarisView: React.FC<StokInventarisViewProps> = ({
                 <th className="py-2.5 px-3 border-r border-[#1a8e45] w-20 text-center">Kode</th>
                 <th className="py-2.5 px-4 border-r border-[#1a8e45]">Nama Barang</th>
                 <th className="py-2.5 px-3 border-r border-[#1a8e45] w-28 text-center">Status Blanko</th>
-                <th className="py-2.5 px-4">Digunakan Oleh</th>
+                <th className="py-2.5 px-4 border-r border-[#1a8e45]">Digunakan Oleh</th>
+                <th className="py-2.5 px-3 w-28 text-center">Aksi</th>
               </tr>
             </thead>
             <tbody className="divide-y divide-slate-100 font-mono">
               {filteredSerials.length === 0 ? (
                 <tr>
-                  <td colSpan={6} className="py-6 text-center text-slate-400 font-sans">
+                  <td colSpan={7} className="py-6 text-center text-slate-400 font-sans">
                     Tidak ada nomor seri blanko yang sesuai dengan kriteria filter.
                   </td>
                 </tr>
@@ -301,6 +306,21 @@ export const StokInventarisView: React.FC<StokInventarisViewProps> = ({
                         <span className="text-slate-400">-</span>
                       )}
                     </td>
+                    <td className="py-1.5 px-3 text-center font-sans">
+                      {s.status === 'TERPAKAI' ? (
+                        <button
+                          type="button"
+                          onClick={() => setSelectedSeriToDelete(s)}
+                          className="inline-flex items-center space-x-1 px-2.5 py-1 bg-rose-50 hover:bg-rose-100 text-rose-700 border border-rose-300 rounded font-semibold text-[11px] shadow-sm transition-colors"
+                          title="Hapus pemakaian / Batalkan blanko terpakai dengan otorisasi password wifi kantor"
+                        >
+                          <Trash2 className="w-3 h-3 text-rose-600" />
+                          <span>Batalkan</span>
+                        </button>
+                      ) : (
+                        <span className="text-slate-300 font-bold">-</span>
+                      )}
+                    </td>
                   </tr>
                 ))
               )}
@@ -308,6 +328,18 @@ export const StokInventarisView: React.FC<StokInventarisViewProps> = ({
           </table>
         </div>
       </div>
+
+      {/* Modal Otorisasi Hapus Blanko Terpakai */}
+      <ModalHapusBlanko
+        isOpen={!!selectedSeriToDelete}
+        onClose={() => setSelectedSeriToDelete(null)}
+        seri={selectedSeriToDelete}
+        onConfirmDelete={(seriNo) => {
+          if (onDeleteUsedSerial) {
+            onDeleteUsedSerial(seriNo);
+          }
+        }}
+      />
     </div>
   );
 };
