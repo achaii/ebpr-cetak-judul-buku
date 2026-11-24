@@ -1,6 +1,6 @@
 import React, { useState, useMemo, useEffect } from 'react';
 import { createPortal } from 'react-dom';
-import { X, Search, RotateCcw, ChevronLeft, ChevronRight, ChevronsLeft, ChevronsRight } from 'lucide-react';
+import { X, Search, RotateCcw, ChevronLeft, ChevronRight, ChevronsLeft, ChevronsRight, Info } from 'lucide-react';
 import { Nasabah } from '@/types/inventory';
 
 interface ModalDaftarTabunganProps {
@@ -94,6 +94,18 @@ export const ModalDaftarTabungan: React.FC<ModalDaftarTabunganProps> = ({
         </div>
 
         <div className="p-5 space-y-4">
+          {/* Panduan Cara Penggunaan */}
+          <div className="bg-emerald-50/70 border border-emerald-200 rounded-md p-3 text-xs text-slate-700 flex items-start space-x-2">
+            <Info className="w-4 h-4 text-emerald-700 shrink-0 mt-0.5" />
+            <div className="leading-relaxed">
+              <strong className="text-emerald-900 font-semibold">Petunjuk Cara Penggunaan:</strong>
+              <span className="ml-1.5">
+                <span className="font-bold text-emerald-800">1.</span> Masukkan kata kunci pencarian pada kotak filter hijau di bawah (No Permohonan, No Rekening, atau Nama Nasabah) lalu klik <strong className="text-[#1b75bb]">Cari</strong>.&nbsp;&nbsp;
+                <span className="font-bold text-emerald-800">2.</span> Klik pada salah satu baris nasabah di tabel untuk langsung memilih dan memuat datanya ke formulir cetak.
+              </span>
+            </div>
+          </div>
+
           {/* Green Filter Box (Exact Legacy Style) */}
           <div className="bg-[#b4dd6b] border border-[#a2cf52] rounded-md p-4 text-xs">
             <div className="max-w-md space-y-2">

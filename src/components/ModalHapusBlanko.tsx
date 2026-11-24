@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { createPortal } from 'react-dom';
-import { X, ShieldAlert, KeyRound, AlertCircle, Eye, EyeOff, RotateCcw } from 'lucide-react';
+import { X, ShieldAlert, KeyRound, AlertCircle, Eye, EyeOff, RotateCcw, Info } from 'lucide-react';
 import { StokSeri } from '@/types/inventory';
 
 interface ModalHapusBlankoProps {
@@ -66,6 +66,19 @@ export const ModalHapusBlanko: React.FC<ModalHapusBlankoProps> = ({
           >
             <X className="w-4 h-4" />
           </button>
+        </div>
+
+        {/* Panduan Cara Penggunaan */}
+        <div className="bg-rose-50/40 border-b border-rose-200 px-5 py-2.5 text-xs text-slate-700 flex items-start space-x-2">
+          <Info className="w-4 h-4 text-rose-700 shrink-0 mt-0.5" />
+          <div className="leading-relaxed">
+            <strong className="text-slate-900 font-semibold">Petunjuk Cara Penggunaan:</strong>
+            <span className="ml-1.5">
+              <span className="font-bold text-rose-800">1.</span> Periksa nomor seri dan rekening pemakai di bawah.&nbsp;&nbsp;
+              <span className="font-bold text-rose-800">2.</span> Masukkan password default wifi kantor (<strong className="font-mono text-rose-900 bg-rose-100 px-1 py-0.5 rounded border border-rose-200">admin1235</strong>).&nbsp;&nbsp;
+              <span className="font-bold text-rose-800">3.</span> Klik <strong className="text-rose-800">&quot;Konfirmasi Hapus / Pulihkan&quot;</strong> untuk mengembalikan status blanko menjadi TERSEDIA di inventaris.
+            </span>
+          </div>
         </div>
 
         {/* Form Body */}

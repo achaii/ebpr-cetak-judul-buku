@@ -53,6 +53,19 @@ export const ModalPreviewCetakBuku: React.FC<ModalPreviewCetakBukuProps> = ({
           </button>
         </div>
 
+        {/* Panduan Cara Penggunaan */}
+        <div className="bg-emerald-50/80 border-b border-emerald-200 px-6 py-2.5 text-xs text-slate-700 flex items-start space-x-2">
+          <Info className="w-4 h-4 text-emerald-700 shrink-0 mt-0.5" />
+          <div className="leading-relaxed">
+            <strong className="text-emerald-900 font-semibold">Petunjuk Cara Penggunaan:</strong>
+            <span className="ml-1.5">
+              <span className="font-bold text-emerald-800">1.</span> Teliti kesesuaian data nasabah dan nomor seri blanko pada pratinjau fisik buku.&nbsp;&nbsp;
+              <span className="font-bold text-emerald-800">2.</span> Pasang fisik buku tabungan pada tray printer passbook.&nbsp;&nbsp;
+              <span className="font-bold text-emerald-800">3.</span> Klik tombol <strong className="text-emerald-800">&quot;Cetak Sekarang (Kunci &amp; Simpan)&quot;</strong> di bawah untuk mencetak dan mengunci nomor seri tersebut ke database.
+            </span>
+          </div>
+        </div>
+
         {/* Physical Passbook Layout Preview */}
         <div className="p-6 bg-slate-100 flex justify-center">
           <div

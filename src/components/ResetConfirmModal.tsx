@@ -43,6 +43,10 @@ export const ResetConfirmModal: React.FC<ResetConfirmModalProps> = ({
                 <div>• Saldo awal Bilyet Deposito: <strong>556</strong></div>
                 <div>• Seri buku tabungan: <strong>001685 - 001705</strong> siap cetak</div>
               </div>
+
+              <div className="mt-3 p-2.5 bg-amber-50/70 border border-amber-200 rounded-lg text-xs text-amber-950 leading-relaxed">
+                <strong className="font-semibold text-amber-900">Petunjuk Cara Penggunaan:</strong> Klik tombol <strong className="text-amber-800">&quot;Ya, Reset ke Default&quot;</strong> jika Anda ingin mengembalikan seluruh data inventaris dan nasabah ke kondisi bawaan awal, atau klik <strong className="text-slate-700">&quot;Batal&quot;</strong> untuk tetap mempertahankan data saat ini.
+              </div>
             </div>
           </div>
         </div>

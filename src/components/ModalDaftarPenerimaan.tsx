@@ -1,6 +1,6 @@
 import React, { useState, useMemo, useEffect } from 'react';
 import { createPortal } from 'react-dom';
-import { X, Search, RotateCcw, ChevronLeft, ChevronRight, ChevronsLeft, ChevronsRight } from 'lucide-react';
+import { X, Search, RotateCcw, ChevronLeft, ChevronRight, ChevronsLeft, ChevronsRight, Info } from 'lucide-react';
 import { StokSeri } from '@/types/inventory';
 
 interface ModalDaftarPenerimaanProps {
@@ -81,6 +81,18 @@ export const ModalDaftarPenerimaan: React.FC<ModalDaftarPenerimaanProps> = ({
         </div>
 
         <div className="p-5 space-y-4">
+          {/* Panduan Cara Penggunaan */}
+          <div className="bg-emerald-50/70 border border-emerald-200 rounded-md p-3 text-xs text-slate-700 flex items-start space-x-2">
+            <Info className="w-4 h-4 text-emerald-700 shrink-0 mt-0.5" />
+            <div className="leading-relaxed">
+              <strong className="text-emerald-900 font-semibold">Petunjuk Cara Penggunaan:</strong>
+              <span className="ml-1.5">
+                <span className="font-bold text-emerald-800">1.</span> Pilih nomor seri blanko fisik buku tabungan yang berstatus <strong className="text-emerald-800">TERSEDIA</strong> dari tabel di bawah (bisa difilter melalui kotak pencarian no serie).&nbsp;&nbsp;
+                <span className="font-bold text-emerald-800">2.</span> Klik pada baris nomor seri yang diinginkan untuk memilih dan memasukkannya ke formulir cetak.
+              </span>
+            </div>
+          </div>
+
           {/* Green Filter Box */}
           <div className="bg-[#b4dd6b] border border-[#a2cf52] rounded-md p-4 text-xs">
             <div className="max-w-md space-y-2">
