@@ -281,9 +281,17 @@ export default function Home() {
         )}
       </main>
 
-      {/* System Footer (Clean without Branch/Storage text) */}
-      <footer className="bg-white border-t border-slate-200 py-3.5 text-xs text-slate-500 w-full text-center">
-        <div className="w-full px-4 sm:px-6 lg:px-8 flex items-center justify-center">
+      {/* System Footer with Steve Jobs Quote */}
+      <footer className="bg-white border-t border-slate-200 py-4 text-xs text-slate-500 w-full text-center space-y-2">
+        <div className="max-w-2xl mx-auto px-4">
+          <blockquote className="italic text-slate-600 text-xs sm:text-[13px] font-serif leading-relaxed">
+            &ldquo;Design is not just what it looks like and feels like. Design is how it works.&rdquo;
+          </blockquote>
+          <p className="text-[11px] text-slate-500 font-medium mt-1">
+            — <span className="font-semibold text-slate-700">Steve Jobs</span> (Pendiri Apple)
+          </p>
+        </div>
+        <div className="w-full px-4 sm:px-6 lg:px-8 flex items-center justify-center pt-2 border-t border-slate-100">
           <div>
             © 2026 <strong>{db.institution.name}</strong> • Cetak Judul Buku
           </div>
