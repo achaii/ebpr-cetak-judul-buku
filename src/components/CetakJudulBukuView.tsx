@@ -171,9 +171,12 @@ export const CetakJudulBukuView: React.FC<CetakJudulBukuViewProps> = ({
       <div className="bg-[#b4dd6b] border border-[#a0ce51] rounded-md p-6 sm:p-7 shadow-sm w-full">
         <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 w-full">
           <div className="flex flex-col sm:flex-row sm:items-center space-y-2 sm:space-y-0 sm:space-x-4 w-full sm:w-auto">
-            <label className="text-xs font-medium text-slate-800 whitespace-nowrap">
-              No Rekening Nasabah
-            </label>
+            <div className="space-y-0.5">
+              <label className="text-xs font-medium text-slate-800 whitespace-nowrap">
+                No Rekening Nasabah
+              </label>
+              <p className="text-[10px] text-slate-600">Nomor rekening tabungan nasabah (12 digit angka)</p>
+            </div>
             <div className="flex items-center space-x-2 w-full sm:w-96">
               <input
                 type="text"
@@ -223,6 +226,7 @@ export const CetakJudulBukuView: React.FC<CetakJudulBukuViewProps> = ({
                     disabled
                     className="w-full px-3 py-1 bg-slate-200/90 border border-slate-300 rounded text-xs font-mono text-slate-700 cursor-not-allowed"
                   />
+                  <p className="text-[10px] text-slate-600 mt-0.5">Nomor CIF / Identitas registrasi nasabah di sistem bank</p>
                 </div>
               </div>
 
@@ -238,6 +242,7 @@ export const CetakJudulBukuView: React.FC<CetakJudulBukuViewProps> = ({
                     disabled
                     className="w-full px-3 py-1 bg-slate-200/90 border border-slate-300 rounded text-xs font-bold text-slate-800 cursor-not-allowed uppercase"
                   />
+                  <p className="text-[10px] text-slate-600 mt-0.5">Nama lengkap pemilik rekening sesuai identitas resmi</p>
                 </div>
               </div>
 
@@ -253,6 +258,7 @@ export const CetakJudulBukuView: React.FC<CetakJudulBukuViewProps> = ({
                     disabled
                     className="w-full px-3 py-1 bg-slate-200/90 border border-slate-300 rounded text-xs text-slate-700 cursor-not-allowed resize-none"
                   />
+                  <p className="text-[10px] text-slate-600 mt-0.5">Alamat nasabah yang akan dicetak pada halaman judul buku tabungan</p>
                 </div>
               </div>
             </div>
@@ -263,23 +269,26 @@ export const CetakJudulBukuView: React.FC<CetakJudulBukuViewProps> = ({
                 <label className="col-span-4 text-xs font-medium text-slate-800">
                   No Serie Buku <span className="text-red-600 font-bold">*</span>
                 </label>
-                <div className="col-span-8 flex space-x-1.5">
-                  <input
-                    type="text"
-                    value={noSerieBuku}
-                    onChange={(e) => setNoSerieBuku(e.target.value)}
-                    placeholder="Contoh: 001685"
-                    className="w-full px-2.5 py-1 bg-white border border-slate-300 rounded text-xs font-mono font-bold text-slate-800 focus:outline-none focus:ring-1 focus:ring-emerald-600"
-                  />
-                  <button
-                    type="button"
-                    onClick={() => setIsDaftarPenerimaanOpen(true)}
-                    className="px-3 py-1 bg-[#1b75bb] hover:bg-[#155d96] text-white text-xs font-semibold rounded shadow-sm flex items-center space-x-1 transition-colors shrink-0"
-                    title="Buka daftar nomor seri blanko yang tersedia"
-                  >
-                    <Search className="w-3 h-3" />
-                    <span>Cari</span>
-                  </button>
+                <div className="col-span-8">
+                  <div className="flex space-x-1.5">
+                    <input
+                      type="text"
+                      value={noSerieBuku}
+                      onChange={(e) => setNoSerieBuku(e.target.value)}
+                      placeholder="Contoh: 001685"
+                      className="w-full px-2.5 py-1 bg-white border border-slate-300 rounded text-xs font-mono font-bold text-slate-800 focus:outline-none focus:ring-1 focus:ring-emerald-600"
+                    />
+                    <button
+                      type="button"
+                      onClick={() => setIsDaftarPenerimaanOpen(true)}
+                      className="px-3 py-1 bg-[#1b75bb] hover:bg-[#155d96] text-white text-xs font-semibold rounded shadow-sm flex items-center space-x-1 transition-colors shrink-0"
+                      title="Buka daftar nomor seri blanko yang tersedia"
+                    >
+                      <Search className="w-3 h-3" />
+                      <span>Cari</span>
+                    </button>
+                  </div>
+                  <p className="text-[10px] text-slate-600 mt-1">Nomor seri fisik blanko buku tabungan yang dikeluarkan dari inventaris</p>
                 </div>
               </div>
             </div>

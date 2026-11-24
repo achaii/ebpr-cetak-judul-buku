@@ -118,36 +118,39 @@ export const LaporanView: React.FC<LaporanViewProps> = ({
             <label className="col-span-3 text-xs font-semibold text-slate-800 text-right pr-4">
               Format
             </label>
-            <div className="col-span-9 flex items-center space-x-6 text-xs font-medium text-slate-800">
-              <label className="inline-flex items-center space-x-1.5 cursor-pointer">
-                <input
-                  type="radio"
-                  name="format"
-                  value="PDF"
-                  checked={format === 'PDF'}
-                  onChange={() => setFormat('PDF')}
-                  className="w-4 h-4 text-emerald-600 focus:ring-emerald-500"
-                />
-                <span className="flex items-center space-x-1">
-                  <FileText className="w-3.5 h-3.5 text-slate-700" />
-                  <span>PDF (Dokumen Siap Cetak)</span>
-                </span>
-              </label>
+            <div className="col-span-9 space-y-1">
+              <div className="flex items-center space-x-6 text-xs font-medium text-slate-800">
+                <label className="inline-flex items-center space-x-1.5 cursor-pointer">
+                  <input
+                    type="radio"
+                    name="format"
+                    value="PDF"
+                    checked={format === 'PDF'}
+                    onChange={() => setFormat('PDF')}
+                    className="w-4 h-4 text-emerald-600 focus:ring-emerald-500"
+                  />
+                  <span className="flex items-center space-x-1">
+                    <FileText className="w-3.5 h-3.5 text-slate-700" />
+                    <span>PDF (Dokumen Siap Cetak)</span>
+                  </span>
+                </label>
 
-              <label className="inline-flex items-center space-x-1.5 cursor-pointer">
-                <input
-                  type="radio"
-                  name="format"
-                  value="XLS"
-                  checked={format === 'XLS'}
-                  onChange={() => setFormat('XLS')}
-                  className="w-4 h-4 text-emerald-600 focus:ring-emerald-500"
-                />
-                <span className="flex items-center space-x-1">
-                  <FileSpreadsheet className="w-3.5 h-3.5 text-slate-700" />
-                  <span>XLS (Spreadsheet Excel)</span>
-                </span>
-              </label>
+                <label className="inline-flex items-center space-x-1.5 cursor-pointer">
+                  <input
+                    type="radio"
+                    name="format"
+                    value="XLS"
+                    checked={format === 'XLS'}
+                    onChange={() => setFormat('XLS')}
+                    className="w-4 h-4 text-emerald-600 focus:ring-emerald-500"
+                  />
+                  <span className="flex items-center space-x-1">
+                    <FileSpreadsheet className="w-3.5 h-3.5 text-slate-700" />
+                    <span>XLS (Spreadsheet Excel)</span>
+                  </span>
+                </label>
+              </div>
+              <p className="text-[10px] text-slate-700">Pilih format output: PDF untuk cetak resmi atau XLS untuk format spreadsheet</p>
             </div>
           </div>
 
@@ -156,7 +159,7 @@ export const LaporanView: React.FC<LaporanViewProps> = ({
             <label className="col-span-3 text-xs font-semibold text-slate-800 text-right pr-4 pt-1">
               Jenis Laporan
             </label>
-            <div className="col-span-9">
+            <div className="col-span-9 space-y-1">
               <div className="border border-slate-300 rounded bg-white overflow-hidden shadow-inner w-full max-w-md">
                 <select
                   size={3}
@@ -175,6 +178,7 @@ export const LaporanView: React.FC<LaporanViewProps> = ({
                   ))}
                 </select>
               </div>
+              <p className="text-[10px] text-slate-700">Pilih 01 untuk rincian mutasi transaksi nasabah atau 02 untuk rekapitulasi mutasi inventaris</p>
             </div>
           </div>
 
@@ -183,22 +187,25 @@ export const LaporanView: React.FC<LaporanViewProps> = ({
             <label className="col-span-3 text-xs font-semibold text-slate-800 text-right pr-4">
               Tanggal
             </label>
-            <div className="col-span-9 flex items-center space-x-2 text-xs">
-              <input
-                type="text"
-                value={startDate}
-                onChange={(e) => setStartDate(e.target.value)}
-                placeholder="01/05/2026"
-                className="w-32 px-2.5 py-1 bg-white border border-slate-300 rounded font-mono text-center focus:outline-none focus:ring-1 focus:ring-emerald-600"
-              />
-              <span className="text-slate-700 font-medium">s.d</span>
-              <input
-                type="text"
-                value={endDate}
-                onChange={(e) => setEndDate(e.target.value)}
-                placeholder="24/11/2026"
-                className="w-32 px-2.5 py-1 bg-white border border-slate-300 rounded font-mono text-center focus:outline-none focus:ring-1 focus:ring-emerald-600"
-              />
+            <div className="col-span-9 space-y-1">
+              <div className="flex items-center space-x-2 text-xs">
+                <input
+                  type="text"
+                  value={startDate}
+                  onChange={(e) => setStartDate(e.target.value)}
+                  placeholder="01/05/2026"
+                  className="w-32 px-2.5 py-1 bg-white border border-slate-300 rounded font-mono text-center focus:outline-none focus:ring-1 focus:ring-emerald-600"
+                />
+                <span className="text-slate-700 font-medium">s.d</span>
+                <input
+                  type="text"
+                  value={endDate}
+                  onChange={(e) => setEndDate(e.target.value)}
+                  placeholder="24/11/2026"
+                  className="w-32 px-2.5 py-1 bg-white border border-slate-300 rounded font-mono text-center focus:outline-none focus:ring-1 focus:ring-emerald-600"
+                />
+              </div>
+              <p className="text-[10px] text-slate-700">Rentang periode data transaksi yang dicetak (format: DD/MM/YYYY)</p>
             </div>
           </div>
 
@@ -210,7 +217,7 @@ export const LaporanView: React.FC<LaporanViewProps> = ({
                 <label className="col-span-3 text-xs font-semibold text-slate-800 text-right pr-4">
                   type
                 </label>
-                <div className="col-span-9">
+                <div className="col-span-9 space-y-1">
                   <select
                     value={reportSubtype}
                     onChange={(e) => setReportSubtype(e.target.value as 'DETAIL' | 'REKAPITULASI')}
@@ -219,6 +226,7 @@ export const LaporanView: React.FC<LaporanViewProps> = ({
                     <option value="DETAIL">DETAIL</option>
                     <option value="REKAPITULASI">REKAPITULASI</option>
                   </select>
+                  <p className="text-[10px] text-slate-700">DETAIL: Menampilkan rincian transaksi per rekening nasabah | REKAPITULASI: Ringkasan akumulasi</p>
                 </div>
               </div>
 
@@ -227,7 +235,7 @@ export const LaporanView: React.FC<LaporanViewProps> = ({
                 <label className="col-span-3 text-xs font-semibold text-slate-800 text-right pr-4">
                   Jenis
                 </label>
-                <div className="col-span-9">
+                <div className="col-span-9 space-y-1">
                   <select
                     value={selectedJenis}
                     onChange={(e) => setSelectedJenis(e.target.value)}
@@ -237,6 +245,7 @@ export const LaporanView: React.FC<LaporanViewProps> = ({
                     <option value="Buku Tabungan">Buku Tabungan</option>
                     <option value="Bilyet Deposito">Bilyet Deposito</option>
                   </select>
+                  <p className="text-[10px] text-slate-700">Filter jenis fisik blanko: Semua, Buku Tabungan (Kode T), atau Bilyet Deposito (Kode D)</p>
                 </div>
               </div>
             </>

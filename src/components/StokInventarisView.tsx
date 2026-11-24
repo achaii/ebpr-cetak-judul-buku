@@ -127,6 +127,7 @@ export const StokInventarisView: React.FC<StokInventarisViewProps> = ({
                   <option value="T">Buku Tabungan Baru (Kode: T)</option>
                   <option value="D">Bilyet Deposito Baru (Kode: D)</option>
                 </select>
+                <p className="text-[10px] text-slate-500 mt-0.5">Pilih kategori fisik blanko yang baru diterima dari vendor</p>
               </div>
             </div>
 
@@ -143,6 +144,7 @@ export const StokInventarisView: React.FC<StokInventarisViewProps> = ({
                   onChange={(e) => setSeriAwal(e.target.value)}
                   className="w-full px-3 py-1.5 bg-white border border-slate-300 rounded font-mono focus:ring-1 focus:ring-emerald-600"
                 />
+                <p className="text-[10px] text-slate-500 mt-0.5">Nomor urut seri fisik awal pada bendel/dus blanko percetakan</p>
               </div>
             </div>
 
@@ -159,6 +161,7 @@ export const StokInventarisView: React.FC<StokInventarisViewProps> = ({
                   onChange={(e) => setSeriAkhir(e.target.value)}
                   className="w-full px-3 py-1.5 bg-white border border-slate-300 rounded font-mono focus:ring-1 focus:ring-emerald-600"
                 />
+                <p className="text-[10px] text-slate-500 mt-0.5">Nomor urut seri fisik akhir pada bendel/dus blanko percetakan</p>
               </div>
             </div>
 
@@ -172,6 +175,7 @@ export const StokInventarisView: React.FC<StokInventarisViewProps> = ({
                   className="w-full px-3 py-1.5 bg-white border border-slate-300 rounded focus:ring-1 focus:ring-emerald-600"
                   placeholder="Contoh: Penerimaan blanko kiriman vendor percetakan batch II"
                 />
+                <p className="text-[10px] text-slate-500 mt-0.5">Nomor Surat Jalan (DO), nama vendor percetakan, atau batch penerimaan logistik</p>
               </div>
             </div>
 
