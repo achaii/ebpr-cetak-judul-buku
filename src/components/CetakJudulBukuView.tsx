@@ -129,10 +129,10 @@ export const CetakJudulBukuView: React.FC<CetakJudulBukuViewProps> = ({
         <Info className="w-4 h-4 text-emerald-700 shrink-0 mt-0.5" />
         <div className="leading-relaxed">
           <strong className="text-emerald-900 font-semibold">Tata Cara Pencetakan Buku Tabungan:</strong>
-          <span className="ml-1">
-            1. Masukkan nomor rekening atau klik tombol <span className="font-semibold text-emerald-800">Bantuan Pencarian</span> untuk memilih nasabah. &nbsp;|&nbsp;
-            2. Pastikan nomor seri blanko buku tabungan terisi. &nbsp;|&nbsp;
-            3. Masukkan fisik buku tabungan ke printer passbook lalu klik tombol <span className="font-semibold text-emerald-800">Cetak</span>.
+          <span className="ml-1.5">
+            <span className="font-bold text-emerald-800">1.</span> Masukkan nomor rekening atau klik tombol <span className="font-semibold text-emerald-800">Bantuan Pencarian</span> untuk memilih nasabah.&nbsp;&nbsp;
+            <span className="font-bold text-emerald-800">2.</span> Pastikan nomor seri blanko buku tabungan terisi.&nbsp;&nbsp;
+            <span className="font-bold text-emerald-800">3.</span> Masukkan fisik buku tabungan ke printer passbook lalu klik tombol <span className="font-semibold text-emerald-800">Cetak</span>.
           </span>
         </div>
       </div>

@@ -18,7 +18,8 @@
       "jenisProduk": "TAB MAPAN",
       "tanggalBuka": "2026-07-01",
       "statusBuku": "Belum Dicetak",
-      "lastPrintedSerial": null
+      "lastPrintedSerial": null,
+      "lastPrintedDate": null
     },
     {
       "id": "2",
@@ -399,6 +400,37 @@
   ],
   "transaksi": [
     {
+      "id": "TRX-BATAL-1795532873007",
+      "tanggal": "24/11/2026 22.07.53",
+      "noTransaksi": "BATAL/BC/202611/0016",
+      "jenisBarang": "Buku Tabungan Baru",
+      "kode": "T",
+      "tipe": "PENERIMAAN",
+      "jumlah": 1,
+      "noSerie": "001685",
+      "noRekening": "100230002455",
+      "namaNasabah": "Pembatalan Blanko Terpakai",
+      "keterangan": "Pembatalan status nomor seri 001685 (Otorisasi: admin1235)",
+      "petugas": "SUPERVISOR (ADMIN)",
+      "status": "BATAL"
+    },
+    {
+      "id": "TRX-1795532696460",
+      "tanggal": "24/11/2026 22.04.56",
+      "noTransaksi": "TRX/BC/202611/0015",
+      "jenisBarang": "Buku Tabungan",
+      "kode": "T",
+      "tipe": "PENGELUARAN",
+      "jumlah": 1,
+      "noSerie": "001685",
+      "noRekening": "100230002455",
+      "noCIF": "100200002569",
+      "namaNasabah": "AHMAD FAUZI",
+      "keterangan": "Cetak Judul Buku Tabungan Baru No Seri 001685",
+      "petugas": "CS-01 (OPERATOR)",
+      "status": "SELESAI"
+    },
+    {
       "id": "TRX-001",
       "noCIF": "100200000630",
       "noRekening": "100220000771",
@@ -623,5 +655,5 @@
       "status": "SELESAI"
     }
   ],
-  "lastUpdated": "2026-11-24T14:49:59.372Z"
+  "lastUpdated": "2026-11-24T15:07:53.008Z"
 }
