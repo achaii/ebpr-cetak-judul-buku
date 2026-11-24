@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Printer, FileSpreadsheet, FileText, Info } from 'lucide-react';
+import { Lock, FileSpreadsheet, FileText, Info } from 'lucide-react';
 import { Institution, BarangCetakan, TransaksiBarangCetakan } from '@/types/inventory';
 import { ModalPdfViewer } from './ModalPdfViewer';
 import { exportBarangCetakanToExcel, exportTransaksiToExcel } from '@/lib/excel-export';
@@ -16,9 +16,11 @@ export const LaporanView: React.FC<LaporanViewProps> = ({
   transaksiList,
 }) => {
   const [format, setFormat] = useState<'PDF' | 'XLS'>('PDF');
-  const [selectedReport, setSelectedReport] = useState<'01' | '02'>('02');
-  const [startDate, setStartDate] = useState('01/07/2026');
+  const [selectedReport, setSelectedReport] = useState<'01' | '02'>('01');
+  const [startDate, setStartDate] = useState('01/05/2026');
   const [endDate, setEndDate] = useState('24/11/2026');
+  const [reportSubtype, setReportSubtype] = useState<'DETAIL' | 'REKAPITULASI'>('DETAIL');
+  const [selectedJenis, setSelectedJenis] = useState<string>('Semua');
 
   const [isPdfModalOpen, setIsPdfModalOpen] = useState(false);
   const [statusMessage, setStatusMessage] = useState<string | null>(null);
@@ -27,6 +29,17 @@ export const LaporanView: React.FC<LaporanViewProps> = ({
     { id: '01', label: '01. Transaksi Barang Cetakan' },
     { id: '02', label: '02. Barang Cetakan' },
   ];
+
+  const handleReportChange = (id: '01' | '02') => {
+    setSelectedReport(id);
+    if (id === '01') {
+      setStartDate('01/05/2026');
+      setEndDate('24/11/2026');
+    } else {
+      setStartDate('01/07/2026');
+      setEndDate('24/11/2026');
+    }
+  };
 
   const handleCetak = () => {
     setStatusMessage(null);
@@ -52,10 +65,12 @@ export const LaporanView: React.FC<LaporanViewProps> = ({
   };
 
   const handleTutup = () => {
-    setSelectedReport('02');
+    setSelectedReport('01');
     setFormat('PDF');
-    setStartDate('01/07/2026');
+    setStartDate('01/05/2026');
     setEndDate('24/11/2026');
+    setReportSubtype('DETAIL');
+    setSelectedJenis('Semua');
     setStatusMessage(null);
   };
 
@@ -146,7 +161,7 @@ export const LaporanView: React.FC<LaporanViewProps> = ({
                 <select
                   size={3}
                   value={selectedReport}
-                  onChange={(e) => setSelectedReport(e.target.value as '01' | '02')}
+                  onChange={(e) => handleReportChange(e.target.value as '01' | '02')}
                   className="w-full text-xs font-medium text-slate-800 focus:outline-none p-1.5"
                 >
                   {reportOptions.map((opt) => (
@@ -163,7 +178,7 @@ export const LaporanView: React.FC<LaporanViewProps> = ({
             </div>
           </div>
 
-          {/* Tanggal Periode: [01/07/2026] s.d [24/11/2026] */}
+          {/* Tanggal Periode: [01/05/2026] s.d [24/11/2026] */}
           <div className="grid grid-cols-12 items-center gap-2">
             <label className="col-span-3 text-xs font-semibold text-slate-800 text-right pr-4">
               Tanggal
@@ -173,7 +188,7 @@ export const LaporanView: React.FC<LaporanViewProps> = ({
                 type="text"
                 value={startDate}
                 onChange={(e) => setStartDate(e.target.value)}
-                placeholder="01/07/2026"
+                placeholder="01/05/2026"
                 className="w-32 px-2.5 py-1 bg-white border border-slate-300 rounded font-mono text-center focus:outline-none focus:ring-1 focus:ring-emerald-600"
               />
               <span className="text-slate-700 font-medium">s.d</span>
@@ -186,18 +201,58 @@ export const LaporanView: React.FC<LaporanViewProps> = ({
               />
             </div>
           </div>
+
+          {/* Conditional Fields matching Gambar 1 when Transaksi Barang Cetakan is selected */}
+          {selectedReport === '01' && (
+            <>
+              {/* type: DETAIL */}
+              <div className="grid grid-cols-12 items-center gap-2">
+                <label className="col-span-3 text-xs font-semibold text-slate-800 text-right pr-4">
+                  type
+                </label>
+                <div className="col-span-9">
+                  <select
+                    value={reportSubtype}
+                    onChange={(e) => setReportSubtype(e.target.value as 'DETAIL' | 'REKAPITULASI')}
+                    className="w-full max-w-md px-2.5 py-1 bg-white border border-slate-300 rounded text-xs text-slate-800 focus:outline-none focus:ring-1 focus:ring-emerald-600 shadow-inner"
+                  >
+                    <option value="DETAIL">DETAIL</option>
+                    <option value="REKAPITULASI">REKAPITULASI</option>
+                  </select>
+                </div>
+              </div>
+
+              {/* Jenis: Semua */}
+              <div className="grid grid-cols-12 items-center gap-2">
+                <label className="col-span-3 text-xs font-semibold text-slate-800 text-right pr-4">
+                  Jenis
+                </label>
+                <div className="col-span-9">
+                  <select
+                    value={selectedJenis}
+                    onChange={(e) => setSelectedJenis(e.target.value)}
+                    className="w-full max-w-md px-2.5 py-1 bg-white border border-slate-300 rounded text-xs text-slate-800 focus:outline-none focus:ring-1 focus:ring-emerald-600 shadow-inner"
+                  >
+                    <option value="Semua">Semua</option>
+                    <option value="Buku Tabungan">Buku Tabungan</option>
+                    <option value="Bilyet Deposito">Bilyet Deposito</option>
+                  </select>
+                </div>
+              </div>
+            </>
+          )}
         </div>
 
         <hr className="border-t border-[#9acb4b] pt-1" />
 
-        {/* Buttons: [Cetak] and [Tutup] */}
+        {/* Buttons: [Cetak] with Lock icon and [Tutup] matching Gambar 1 */}
         <div className="flex items-center space-x-2">
           <button
             type="button"
             onClick={handleCetak}
-            className="px-4 py-1.5 bg-[#127a38] hover:bg-[#0f642e] text-white text-xs font-semibold rounded shadow-sm flex items-center space-x-1.5 transition-colors"
+            className="px-4 py-1.5 bg-[#00a896] hover:bg-[#009282] text-white text-xs font-semibold rounded shadow-sm flex items-center space-x-1.5 transition-colors"
           >
-            <Printer className="w-3.5 h-3.5" />
+            <Lock className="w-3.5 h-3.5" />
             <span>Cetak</span>
           </button>
           <button
@@ -216,6 +271,8 @@ export const LaporanView: React.FC<LaporanViewProps> = ({
         onClose={() => setIsPdfModalOpen(false)}
         institution={institution}
         reportType={selectedReport}
+        reportSubtype={reportSubtype}
+        selectedJenis={selectedJenis}
         barangCetakanList={barangCetakanList}
         transaksiList={transaksiList}
         dateRange={{ start: startDate, end: endDate }}

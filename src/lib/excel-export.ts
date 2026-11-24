@@ -42,30 +42,26 @@ export function exportTransaksiToExcel(
 ) {
   const headers = [
     'No',
+    'NoCIF',
+    'Norek',
     'Tanggal',
-    'No Transaksi',
+    'No Serie',
     'Jenis Barang',
     'Tipe',
-    'No Serie',
-    'No Rekening',
     'Nama Nasabah',
-    'Keterangan',
     'Petugas',
-    'Status',
   ];
 
   const rows = transaksi.map((t, index) => [
     index + 1,
-    `"${t.tanggal}"`,
-    `"${t.noTransaksi}"`,
+    `"${t.noCIF || t.noTransaksi}"`,
+    `"${t.noRekening || t.norek || '-'}"`,
+    `"${t.tanggal?.substring(0, 10)}"`,
+    `"${t.noSerie}"`,
     `"${t.jenisBarang}"`,
     `"${t.tipe}"`,
-    `"${t.noSerie}"`,
-    `"${t.noRekening}"`,
     `"${t.namaNasabah}"`,
-    `"${t.keterangan}"`,
     `"${t.petugas}"`,
-    `"${t.status}"`,
   ]);
 
   const csvContent = [

@@ -116,6 +116,7 @@ export default function Home() {
       jumlah: 1,
       noSerie: noSerie,
       noRekening: rekening,
+      noCIF: targetNasabah ? targetNasabah.noRegister : '100200000000',
       namaNasabah: nama,
       keterangan: `Cetak Judul Buku Tabungan Baru No Seri ${noSerie}`,
       petugas: 'CS-01 (OPERATOR)',

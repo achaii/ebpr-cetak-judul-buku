@@ -54,6 +54,8 @@ export interface TransaksiBarangCetakan {
   jumlah: number;
   noSerie: string;
   noRekening: string;
+  norek?: string;
+  noCIF?: string;
   namaNasabah: string;
   keterangan: string;
   petugas: string;

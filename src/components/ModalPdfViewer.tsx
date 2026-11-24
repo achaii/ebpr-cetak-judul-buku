@@ -15,6 +15,8 @@ interface ModalPdfViewerProps {
   onClose: () => void;
   institution: Institution;
   reportType: '01' | '02'; // 01: Transaksi, 02: Barang Cetakan
+  reportSubtype?: 'DETAIL' | 'REKAPITULASI';
+  selectedJenis?: string;
   barangCetakanList: BarangCetakan[];
   transaksiList: TransaksiBarangCetakan[];
   dateRange: { start: string; end: string };
@@ -25,6 +27,8 @@ export const ModalPdfViewer: React.FC<ModalPdfViewerProps> = ({
   onClose,
   institution,
   reportType,
+  reportSubtype = 'DETAIL',
+  selectedJenis = 'Semua',
   barangCetakanList,
   transaksiList,
   dateRange,
@@ -42,7 +46,7 @@ export const ModalPdfViewer: React.FC<ModalPdfViewerProps> = ({
   const fileName =
     reportType === '02'
       ? 'laporanStkBarangCetakan.pdf'
-      : 'laporanTransaksiBarangCetakan.pdf';
+      : 'laporanTrxBarangCetakan.pdf';
 
   const titleText =
     reportType === '02'
@@ -59,6 +63,14 @@ export const ModalPdfViewer: React.FC<ModalPdfViewerProps> = ({
   const totalDebet = barangCetakanList.reduce((acc, i) => acc + i.debet, 0);
   const totalKredit = barangCetakanList.reduce((acc, i) => acc + i.kredit, 0);
   const totalAkhir = barangCetakanList.reduce((acc, i) => acc + i.saldoAkhir, 0);
+
+  const filteredTransactions = transaksiList.filter((t) => {
+    if (selectedJenis && selectedJenis !== 'Semua') {
+      if (selectedJenis === 'Buku Tabungan' && t.kode !== 'T') return false;
+      if (selectedJenis === 'Bilyet Deposito' && t.kode !== 'D') return false;
+    }
+    return true;
+  });
 
   const handlePrint = () => {
     window.print();
@@ -77,7 +89,7 @@ export const ModalPdfViewer: React.FC<ModalPdfViewerProps> = ({
           <span className="font-medium text-slate-100">{fileName}</span>
           <span className="text-slate-500">|</span>
           <div className="flex items-center space-x-1.5 text-slate-300">
-            <span>1 / 1</span>
+            <span>{reportType === '01' ? '1 / 2' : '1 / 1'}</span>
           </div>
           <span className="text-slate-500">|</span>
           <div className="flex items-center space-x-1 bg-slate-800 px-2 py-0.5 rounded border border-slate-700">
@@ -147,28 +159,32 @@ export const ModalPdfViewer: React.FC<ModalPdfViewerProps> = ({
         >
           {/* Document Content */}
           <div className="space-y-6">
-            {/* Header / Kop Surat (Exact Screenshot 6) */}
-            <div className="flex justify-between items-start border-b-2 border-slate-800 pb-4">
-              <div className="space-y-1 max-w-lg">
-                <h1 className="font-extrabold text-sm tracking-wide text-slate-900 uppercase">
+            {/* Header / Kop Surat (Exact Screenshot 2 & 6) */}
+            <div className={`flex justify-between items-start pb-4 ${reportType === '02' ? 'border-b-2 border-slate-800' : ''}`}>
+              <div className="space-y-0.5 max-w-lg">
+                <h1 className="font-bold text-xs tracking-tight text-slate-900 uppercase">
                   {institution.name}
                 </h1>
-                <p className="text-[11px] text-slate-700 leading-snug">
+                <p className="text-[10px] text-slate-700 leading-snug">
                   {institution.address}
                 </p>
-                <p className="text-[10px] text-slate-500 font-mono">
-                  Telp: {institution.phone}
-                </p>
+                {reportType === '02' && (
+                  <p className="text-[10px] text-slate-500 font-mono">
+                    Telp: {institution.phone}
+                  </p>
+                )}
               </div>
 
               <div className="flex flex-col items-end space-y-1">
-                <span className="text-[11px] text-slate-700">
+                <span className="text-[10px] text-slate-700">
                   Tanggal Cetak : <strong>{currentDate}</strong>
                 </span>
-                <div className="w-14 h-14 bg-white border border-slate-300 p-1 flex items-center justify-center">
-                  <QrCode className="w-12 h-12 text-slate-800" />
+                <div className="w-12 h-12 bg-white border border-slate-300 p-0.5 flex items-center justify-center">
+                  <QrCode className="w-10 h-10 text-slate-800" />
                 </div>
-                <span className="text-[8px] text-slate-400 font-mono">AUTHO-GEN-DOC</span>
+                {reportType === '02' && (
+                  <span className="text-[8px] text-slate-400 font-mono">AUTHO-GEN-DOC</span>
+                )}
               </div>
             </div>
 
@@ -182,7 +198,7 @@ export const ModalPdfViewer: React.FC<ModalPdfViewerProps> = ({
               </p>
             </div>
 
-            {/* REPORT 02: STOK BARANG CETAKAN TABLE (Exact Screenshot 6) */}
+            {/* REPORT 02: STOK BARANG CETAKAN TABLE (Screenshot 6) */}
             {reportType === '02' && (
               <div className="border-t border-b-2 border-slate-900 pt-1 pb-1">
                 <table className="w-full text-xs border-collapse">
@@ -237,89 +253,74 @@ export const ModalPdfViewer: React.FC<ModalPdfViewerProps> = ({
               </div>
             )}
 
-            {/* REPORT 01: DETAIL TRANSAKSI BARANG CETAKAN TABLE */}
+            {/* REPORT 01: DETAIL TRANSAKSI BARANG CETAKAN TABLE (Exact Screenshot 2) */}
             {reportType === '01' && (
-              <div className="border-t border-b-2 border-slate-900 pt-1 pb-1">
-                <table className="w-full text-[11px] border-collapse">
-                  <thead>
-                    <tr className="border-b border-slate-900">
-                      <th className="py-2 px-2 text-center w-8 font-bold">No</th>
-                      <th className="py-2 px-2 text-left w-24 font-bold">Tanggal</th>
-                      <th className="py-2 px-2 text-left w-28 font-bold">No Transaksi</th>
-                      <th className="py-2 px-2 text-left w-24 font-bold">Barang</th>
-                      <th className="py-2 px-2 text-center w-16 font-bold">Tipe</th>
-                      <th className="py-2 px-2 text-left w-20 font-bold">No Seri</th>
-                      <th className="py-2 px-2 text-left font-bold">Nasabah / Keterangan</th>
-                      <th className="py-2 px-2 text-left w-20 font-bold">Petugas</th>
-                    </tr>
-                  </thead>
-                  <tbody className="divide-y divide-slate-200">
-                    {transaksiList.map((t, idx) => (
-                      <tr key={t.id} className="hover:bg-slate-50/50">
-                        <td className="py-1.5 px-2 text-center text-slate-700">{idx + 1}</td>
-                        <td className="py-1.5 px-2 text-slate-600 font-mono text-[10px]">
-                          {t.tanggal.substring(0, 10)}
-                        </td>
-                        <td className="py-1.5 px-2 font-mono text-[10px] text-slate-700 font-medium">
-                          {t.noTransaksi}
-                        </td>
-                        <td className="py-1.5 px-2 text-slate-800">{t.jenisBarang}</td>
-                        <td className="py-1.5 px-2 text-center">
-                          <span
-                            className={`px-1.5 py-0.5 rounded text-[9px] font-bold ${
-                              t.tipe === 'PENGELUARAN'
-                                ? 'bg-amber-100 text-amber-800'
-                                : 'bg-emerald-100 text-emerald-800'
-                            }`}
-                          >
-                            {t.tipe}
-                          </span>
-                        </td>
-                        <td className="py-1.5 px-2 font-mono font-bold text-slate-900">
-                          {t.noSerie}
-                        </td>
-                        <td className="py-1.5 px-2 text-slate-800 text-[10px]">
-                          <div className="font-semibold">{t.namaNasabah}</div>
-                          <div className="text-slate-500">{t.keterangan}</div>
-                        </td>
-                        <td className="py-1.5 px-2 text-slate-600 text-[10px]">{t.petugas}</td>
+              <div className="space-y-2">
+                <div className="text-left font-bold text-xs text-slate-900 tracking-wide uppercase">
+                  {reportSubtype || 'DETAIL'}
+                </div>
+                <div className="w-full">
+                  <table className="w-full text-xs border-collapse">
+                    <thead>
+                      <tr className="border-t-2 border-b border-slate-900 font-bold text-slate-900">
+                        <th className="py-2 px-3 text-center w-12 font-bold">No</th>
+                        <th className="py-2 px-6 text-left w-36 font-bold">NoCIF</th>
+                        <th className="py-2 px-6 text-left w-36 font-bold">Norek</th>
+                        <th className="py-2 px-6 text-center w-32 font-bold">Tanggal</th>
+                        <th className="py-2 px-6 text-right w-32 font-bold">No Serie</th>
                       </tr>
-                    ))}
-                  </tbody>
-                </table>
+                    </thead>
+                    <tbody className="divide-y divide-transparent">
+                      {filteredTransactions.map((trx, idx) => (
+                        <tr key={trx.id || idx} className="text-slate-900 text-xs">
+                          <td className="py-1.5 px-3 text-center">{idx + 1}</td>
+                          <td className="py-1.5 px-6 text-left font-mono">{trx.noCIF || trx.noTransaksi}</td>
+                          <td className="py-1.5 px-6 text-left font-mono">{trx.noRekening || trx.norek}</td>
+                          <td className="py-1.5 px-6 text-center font-mono">{trx.tanggal?.substring(0, 10)}</td>
+                          <td className="py-1.5 px-6 text-right font-mono font-medium">{trx.noSerie}</td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                  <div className="border-b border-slate-900 mt-2"></div>
+                </div>
               </div>
             )}
 
-            {/* Notes */}
-            <div className="text-[10px] text-slate-500 pt-2">
-              <p>* Laporan ini digenerate secara otomatis oleh sistem e-Inventaris BPR.</p>
-              <p>* Mutasi Debet merepresentasikan pengeluaran barang cetakan ke nasabah/operasional.</p>
-              <p>* Mutasi Kredit merepresentasikan penerimaan kiriman logistik baru dari percetakan.</p>
-            </div>
+            {/* Notes only for Report 02 */}
+            {reportType === '02' && (
+              <div className="text-[10px] text-slate-500 pt-2">
+                <p>* Laporan ini digenerate secara otomatis oleh sistem e-Inventaris BPR.</p>
+                <p>* Mutasi Debet merepresentasikan pengeluaran barang cetakan ke nasabah/operasional.</p>
+                <p>* Mutasi Kredit merepresentasikan penerimaan kiriman logistik baru dari percetakan.</p>
+              </div>
+            )}
           </div>
 
-          {/* Signature Block */}
-          <div className="pt-12 grid grid-cols-2 gap-8 text-center text-xs text-slate-800">
-            <div>
-              <p className="font-semibold">Dibuat Oleh,</p>
-              <p className="text-[11px] text-slate-500 mt-0.5">Petugas Administrasi & Inventaris</p>
-              <div className="h-16 flex items-end justify-center">
-                <span className="font-mono text-slate-400 text-[10px]">[ Tanda Tangan ]</span>
+          {/* Signature Block only for Report 02 (Omitted for Report 01 matching Screenshot 2) */}
+          {reportType === '02' && (
+            <div className="pt-12 grid grid-cols-2 gap-8 text-center text-xs text-slate-800">
+              <div>
+                <p className="font-semibold">Dibuat Oleh,</p>
+                <p className="text-[11px] text-slate-500 mt-0.5">Petugas Administrasi & Inventaris</p>
+                <div className="h-16 flex items-end justify-center">
+                  <span className="font-mono text-slate-400 text-[10px]">[ Tanda Tangan ]</span>
+                </div>
+                <p className="font-bold underline uppercase">( RANI ANGGRAENI )</p>
+                <p className="text-[10px] text-slate-500">NIK. 202108-019</p>
               </div>
-              <p className="font-bold underline uppercase">( RANI ANGGRAENI )</p>
-              <p className="text-[10px] text-slate-500">NIK. 202108-019</p>
-            </div>
 
-            <div>
-              <p className="font-semibold">Mengetahui & Menyetujui,</p>
-              <p className="text-[11px] text-slate-500 mt-0.5">Pimpinan Kantor Cabang Operasional</p>
-              <div className="h-16 flex items-end justify-center">
-                <span className="font-mono text-slate-400 text-[10px]">[ Tanda Tangan & Stempel ]</span>
+              <div>
+                <p className="font-semibold">Mengetahui & Menyetujui,</p>
+                <p className="text-[11px] text-slate-500 mt-0.5">Pimpinan Kantor Cabang Operasional</p>
+                <div className="h-16 flex items-end justify-center">
+                  <span className="font-mono text-slate-400 text-[10px]">[ Tanda Tangan & Stempel ]</span>
+                </div>
+                <p className="font-bold underline uppercase">( DRS. H. ACHMAD HIDAYAT )</p>
+                <p className="text-[10px] text-slate-500">Pimpinan Operasional</p>
               </div>
-              <p className="font-bold underline uppercase">( DRS. H. ACHMAD HIDAYAT )</p>
-              <p className="text-[10px] text-slate-500">Pimpinan Operasional</p>
             </div>
-          </div>
+          )}
         </div>
       </div>
     </div>,
